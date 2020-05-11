@@ -14,16 +14,16 @@ None.
 | `firewalld_state` | `started` | Manage the state of the firewalld service</br>Choices: <ul><li>reloaded</li><li>restarted</li><li>started</li><li>stopped</li></ul> |
 | `firewalld_rules` | `[]` | List of firewall rules. The parameters can be looked up [here](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).* |
 | `firewalld_config` | `{}` | A dict (key-value pairs) of firewalld base configuration options. |
-| `firewalld_config.DefaultZone` | `public` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.CleanupOnExit` | `true` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.Lockdown` | `true` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.IPv6_rpfilter` | `true` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.IndividualCalls` | `false` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.LogDenied` | `off` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.FirewallBackend` | `nftables` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.FlushAllOnReload` | `true` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.RFC3964_IPv4` | `true` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
-| `firewalld_config.AllowZoneDrifting` | `false` | See [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.DefaultZone` | `public` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.CleanupOnExit` | `true` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.Lockdown` | `true` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.IPv6_rpfilter` | `true` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.IndividualCalls` | `false` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.LogDenied` | `off` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.FirewallBackend` | `nftables` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.FlushAllOnReload` | `true` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.RFC3964_IPv4` | `true` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
+| `firewalld_config.AllowZoneDrifting` | `false` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
 
 > *If not specified otherwise, the rules will be added permanently and applied immediately after the role finishes. Except from that, the defaults are the same as the defaults of the official [firewalld module](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).
 
