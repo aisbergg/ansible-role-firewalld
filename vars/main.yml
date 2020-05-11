@@ -1,0 +1,13 @@
+---
+# firewalld configuration defaults
+__firewalld_config_defaults:
+  DefaultZone: public
+  CleanupOnExit: true
+  Lockdown: true
+  IPv6_rpfilter: true
+  IndividualCalls: false
+  LogDenied: off
+  FirewallBackend: nftables
+  FlushAllOnReload: true
+  RFC3964_IPv4: true
+  AllowZoneDrifting: false
