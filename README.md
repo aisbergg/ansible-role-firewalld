@@ -12,6 +12,7 @@ None.
 |----------|----------|----------|
 | `firewalld_enabled` | `true` | Enable the firewalld service. |
 | `firewalld_state` | `started` | Manage the state of the firewalld service</br>Choices: <ul><li>reloaded</li><li>restarted</li><li>started</li><li>stopped</li></ul> |
+| `firewalld_debian_repo` | `{{ ansible_distribution_release }}-backports` | The repository to install firewalld from. Applies only on Debian systems. |
 | `firewalld_rules` | `[]` | List of firewall rules. The parameters can be looked up [here](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).* |
 | `firewalld_config` | `{}` | A dict (key-value pairs) of firewalld base configuration options. |
 | `firewalld_config.DefaultZone` | `public` | See the [official firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |

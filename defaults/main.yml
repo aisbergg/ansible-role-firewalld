@@ -1,4 +1,7 @@
 ---
+# repository to use for installation (debian only)
+firewalld_debian_repo: "{{ ansible_distribution_release }}-backports"
+
 # enable or disable service
 firewalld_enabled: true
 

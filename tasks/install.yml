@@ -1,0 +1,6 @@
+- name: Install Firewalld requirements
+  package:
+    name:
+      - nftables
+      - firewalld
+    state: present
