@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2020-06-13
+### Added
+- Add option `firewalld_debian_repo` to install reasonable up to date version of firewalld on Debian systems.
+
+### Fixed
+- Fix type of default variable `firewalld_config.LogDenied`
+
 ## [1.0.1] - 2020-05-28
 ### Changed
 - Clean up repo
