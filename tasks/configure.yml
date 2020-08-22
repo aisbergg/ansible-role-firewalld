@@ -1,0 +1,11 @@
+---
+- name: Create configuration
+  template:
+    src: firewalld.conf.j2
+    dest: /etc/firewalld/firewalld.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload firewalld
+  vars:
+    cfg: "{{ __firewalld_config_defaults | combine(firewalld_config) }}"

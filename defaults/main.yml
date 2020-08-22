@@ -1,6 +1,7 @@
 ---
-# repository to use for installation (debian only)
+# repository to use for installation
 firewalld_debian_repo: "{{ ansible_distribution_release }}-backports"
+firewalld_redhat_enablerepo: ""
 
 # enable or disable service
 firewalld_enabled: true

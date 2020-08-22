@@ -1,7 +1,0 @@
-- name: Install Firewalld requirements
-  apt:
-    name:
-      - nftables
-      - firewalld
-    state: present
-    default_release: "{{ firewalld_debian_repo if firewalld_debian_repo | length > 0 else omit }}"

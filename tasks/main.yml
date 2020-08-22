@@ -1,72 +1,12 @@
 ---
-- include_tasks: "{{ item }}"
-  tags: [firewall, firewalld]
-  with_first_found:
-  - "install_{{ ansible_distribution | lower }}.yml"
-  - "install_{{ ansible_os_family | lower }}.yml"
-  - "install_.yml"
+- import_tasks: install.yml
+  tags: [firewalld, firewalld-install, install]
 
-- name: Create configuration
-  tags: [firewall, firewalld]
-  template:
-    src: firewalld.conf.j2
-    dest: "/etc/firewalld/firewalld.conf"
-    owner: root
-    group: root
-    mode: 0644
-  notify: reload firewalld
-  vars:
-    cfg: "{{ __firewalld_config_defaults | combine(firewalld_config) }}"
+- import_tasks: configure.yml
+  tags: [firewalld, firewalld-config, config]
 
-- name: Manage service
-  tags: [firewall, firewalld]
-  service:
-    name: firewalld
-    state: "{{ firewalld_state }}"
-    enabled: "{{ firewalld_enabled }}"
+- import_tasks: service.yml
+  tags: [firewalld, firewalld-service, service]
 
-- name: Manage permanent firewall rules
-  tags: [firewall, firewalld]
-  firewalld:
-    icmp_block: "{{ item.icmp_block | default(omit) }}"
-    icmp_block_inversion: "{{ item.icmp_block_inversion | default(omit) }}"
-    immediate: "{{ item.immediate | default(false) }}"
-    interface: "{{ item.interface | default(omit) }}"
-    masquerade: "{{ item.masquerade | default(omit) }}"
-    permanent: "{{ item.permanent | default(true) }}"
-    port: "{{ item.port | default(omit) }}"
-    rich_rule: "{{ item.rich_rule | default(omit) }}"
-    service: "{{ item.service | default(omit) }}"
-    source: "{{ item.source | default(omit) }}"
-    state: "{{ item.state | default('enabled') }}"
-    timeout: "{{ item.timeout | default(omit) }}"
-    zone: "{{ item.zone | default(omit) }}"
-  when:
-    - firewalld_state != 'stopped'
-    - item.permanent | default(true)
-  loop: "{{ firewalld_rules }}"
-  notify: reload firewalld
-
-- name: Flush handlers
-  meta: flush_handlers
-
-- name: Manage temporary firewall rules
-  tags: [firewall, firewalld]
-  firewalld:
-    icmp_block: "{{ item.icmp_block | default(omit) }}"
-    icmp_block_inversion: "{{ item.icmp_block_inversion | default(omit) }}"
-    immediate: "{{ item.immediate | default(false) }}"
-    interface: "{{ item.interface | default(omit) }}"
-    masquerade: "{{ item.masquerade | default(omit) }}"
-    permanent: "{{ item.permanent | default(true) }}"
-    port: "{{ item.port | default(omit) }}"
-    rich_rule: "{{ item.rich_rule | default(omit) }}"
-    service: "{{ item.service | default(omit) }}"
-    source: "{{ item.source | default(omit) }}"
-    state: "{{ item.state | default('enabled') }}"
-    timeout: "{{ item.timeout | default(omit) }}"
-    zone: "{{ item.zone | default(omit) }}"
-  when:
-    - firewalld_state != 'stopped'
-    - not (item.permanent | default(true))
-  loop: "{{ firewalld_rules }}"
+- import_tasks: manage_rules.yml
+  tags: [firewalld, firewalld-rules, firewalld-config, config]

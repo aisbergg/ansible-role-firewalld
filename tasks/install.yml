@@ -1,6 +1,28 @@
-- name: Install Firewalld requirements
+---
+- name: Install Firewalld requirements (Debian)
+  apt:
+    name:
+      - nftables
+      - firewalld
+    state: present
+    default_release: "{{ (firewalld_debian_repo | length > 0) | ternary(firewalld_debian_repo, omit) }}"
+  when: "{{ ansible_os_family | lower }} == debian"
+
+- name: Install Firewalld requirements (RedHat)
+  yum:
+    name:
+      - nftables
+      - firewalld
+    state: present
+    enablerepo: "{{ (firewalld_redhat_enablerepo | length > 0) | ternary(firewalld_redhat_enablerepo, omit) }}"
+  when: "{{ ansible_os_family | lower }} == redhat"
+
+- name: Install Firewalld requirements (General)
   package:
     name:
       - nftables
       - firewalld
     state: present
+  when:
+    - "{{ ansible_os_family | lower }} != debian"
+    - "{{ ansible_os_family | lower }} != redhat"

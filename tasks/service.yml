@@ -1,0 +1,7 @@
+---
+- name: Manage service
+  tags: [firewalld, firewalld-service, service]
+  service:
+    name: firewalld
+    state: "{{ firewalld_state }}"
+    enabled: "{{ firewalld_enabled }}"
