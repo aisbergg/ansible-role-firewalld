@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2020-08-22
+### Added
+- Add option `firewalld_redhat_enablerepo` to control the repository, which shall be used to install the requirements.
+
 ## [1.1.0] - 2020-06-13
 ### Added
 - Add option `firewalld_debian_repo` to install reasonable up to date version of firewalld on Debian systems.
