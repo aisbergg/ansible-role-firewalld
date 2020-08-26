@@ -6,7 +6,7 @@
       - firewalld
     state: present
     default_release: "{{ (firewalld_debian_repo | length > 0) | ternary(firewalld_debian_repo, omit) }}"
-  when: "{{ ansible_os_family | lower }} == debian"
+  when: ansible_os_family | lower == 'debian'
 
 - name: Install Firewalld requirements (RedHat)
   yum:
@@ -15,7 +15,7 @@
       - firewalld
     state: present
     enablerepo: "{{ (firewalld_redhat_enablerepo | length > 0) | ternary(firewalld_redhat_enablerepo, omit) }}"
-  when: "{{ ansible_os_family | lower }} == redhat"
+  when: ansible_os_family | lower == 'redhat'
 
 - name: Install Firewalld requirements (General)
   package:
@@ -24,5 +24,5 @@
       - firewalld
     state: present
   when:
-    - "{{ ansible_os_family | lower }} != debian"
-    - "{{ ansible_os_family | lower }} != redhat"
+    - ansible_os_family | lower != 'debian'
+    - ansible_os_family | lower != 'redhat'
