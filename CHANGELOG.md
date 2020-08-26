@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2020-08-26
+### Fixed
+- Fix syntax errors
+
 ## [1.2.0] - 2020-08-22
 ### Added
 - Add option `firewalld_redhat_enablerepo` to control the repository, which shall be used to install the requirements.
