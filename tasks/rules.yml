@@ -1,5 +1,5 @@
 ---
-- name: Manage permanent firewall rules
+- name: manage permanent firewall rules
   firewalld:
     icmp_block: "{{ item.icmp_block | default(omit) }}"
     icmp_block_inversion: "{{ item.icmp_block_inversion | default(omit) }}"
@@ -20,10 +20,10 @@
   loop: "{{ firewalld_rules }}"
   notify: reload firewalld
 
-- name: Flush handlers
+- name: flush handlers
   meta: flush_handlers
 
-- name: Manage temporary firewall rules
+- name: manage temporary firewall rules
   firewalld:
     icmp_block: "{{ item.icmp_block | default(omit) }}"
     icmp_block_inversion: "{{ item.icmp_block_inversion | default(omit) }}"

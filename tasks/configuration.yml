@@ -1,5 +1,5 @@
 ---
-- name: Create configuration
+- name: create configuration
   template:
     src: firewalld.conf.j2
     dest: /etc/firewalld/firewalld.conf

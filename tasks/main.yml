@@ -1,12 +1,12 @@
 ---
-- import_tasks: install.yml
+- import_tasks: installation.yml
   tags: [firewalld, firewalld-install, install]
 
-- import_tasks: configure.yml
+- import_tasks: configuration.yml
   tags: [firewalld, firewalld-config, config]
 
 - import_tasks: service.yml
   tags: [firewalld, firewalld-service, service]
 
-- import_tasks: manage_rules.yml
+- import_tasks: rules.yml
   tags: [firewalld, firewalld-rules, firewalld-config, config]

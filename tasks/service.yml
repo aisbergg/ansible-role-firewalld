@@ -1,6 +1,5 @@
 ---
-- name: Manage service
-  tags: [firewalld, firewalld-service, service]
+- name: manage firewalld service
   service:
     name: firewalld
     state: "{{ firewalld_state }}"
