@@ -1,4 +1,5 @@
 {{ ansible_managed | comment }}
+{% macro as_bool(var) %}{{ var | bool | ternary('yes', 'no') }}{% endmacro %}
 
 # default zone
 # The default zone used if an empty zone string is used.
@@ -9,14 +10,14 @@ DefaultZone={{ cfg.DefaultZone }}
 # If set to no or false the firewall configuration will not get cleaned up
 # on exit or stop of firewalld
 # Default: yes
-CleanupOnExit={{ cfg.CleanupOnExit | ternary('yes', 'no') }}
+CleanupOnExit={{ as_bool(cfg.CleanupOnExit) }}
 
 # Lockdown
 # If set to enabled, firewall changes with the D-Bus interface will be limited
 # to applications that are listed in the lockdown whitelist.
 # The lockdown whitelist file is lockdown-whitelist.xml
 # Default: no
-Lockdown={{ cfg.Lockdown | ternary('yes', 'no') }}
+Lockdown={{ as_bool(cfg.Lockdown) }}
 
 # IPv6_rpfilter
 # Performs a reverse path filter test on a packet for IPv6. If a reply to the
@@ -24,14 +25,14 @@ Lockdown={{ cfg.Lockdown | ternary('yes', 'no') }}
 # packet will match and be accepted, otherwise dropped.
 # The rp_filter for IPv4 is controlled using sysctl.
 # Default: yes
-IPv6_rpfilter={{ cfg.IPv6_rpfilter | ternary('yes', 'no') }}
+IPv6_rpfilter={{ as_bool(cfg.IPv6_rpfilter) }}
 
 # IndividualCalls
 # Do not use combined -restore calls, but individual calls. This increases the
 # time that is needed to apply changes and to start the daemon, but is good for
 # debugging.
 # Default: no
-IndividualCalls={{ cfg.IndividualCalls | ternary('yes', 'no') }}
+IndividualCalls={{ as_bool(cfg.IndividualCalls) }}
 
 # LogDenied
 # Add logging rules right before reject and drop rules in the INPUT, FORWARD
@@ -53,14 +54,14 @@ FirewallBackend={{ cfg.FirewallBackend }}
 # assignment, and direct rules. This was confusing to users. To get the old
 # behavior set this to "no".
 # Default: yes
-FlushAllOnReload={{ cfg.FlushAllOnReload | ternary('yes', 'no') }}
+FlushAllOnReload={{ as_bool(cfg.FlushAllOnReload) }}
 
 # RFC3964_IPv4
 # As per RFC 3964, filter IPv6 traffic with 6to4 destination addresses that
 # correspond to IPv4 addresses that should not be routed over the public
 # internet.
 # Defaults to "yes".
-RFC3964_IPv4={{ cfg.RFC3964_IPv4 | ternary('yes', 'no') }}
+RFC3964_IPv4={{ as_bool(cfg.RFC3964_IPv4) }}
 
 # AllowZoneDrifting
 # Older versions of firewalld had undocumented behavior known as "zone
@@ -72,4 +73,4 @@ RFC3964_IPv4={{ cfg.RFC3964_IPv4 | ternary('yes', 'no') }}
 # based zones (including the default zone). Packets never drift from interface
 # based zones to other interfaces based zones (including the default zone).
 # Possible values; "yes", "no". Defaults to "no".
-AllowZoneDrifting={{ cfg.AllowZoneDrifting | ternary('yes', 'no') }}
+AllowZoneDrifting={{ as_bool(cfg.AllowZoneDrifting) }}
