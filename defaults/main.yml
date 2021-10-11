@@ -1,13 +1,32 @@
 ---
+# ------------------------------------------------------------------------------
+# Installation
+# ------------------------------------------------------------------------------
+
 # repository to use for installation
 firewalld_debian_repo: "{{ ansible_distribution_release }}-backports"
 firewalld_redhat_enablerepo: ""
 
-# enable or disable service
+
+
+# ------------------------------------------------------------------------------
+# Service
+# ------------------------------------------------------------------------------
+
+# service enabled on boot
 firewalld_enabled: true
 
-# service state
+# service run state (started, stopped, restarted)
 firewalld_state: started
+
+# restart service on configuration change
+firewalld_service_restart_on_change: true
+
+
+
+# ------------------------------------------------------------------------------
+# Configuration
+# ------------------------------------------------------------------------------
 
 # firewalld configuration
 firewalld_config: {}

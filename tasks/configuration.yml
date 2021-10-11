@@ -1,6 +1,6 @@
 ---
 - name: create configuration
-  template:
+  ansible.builtin.template:
     src: firewalld.conf.j2
     dest: /etc/firewalld/firewalld.conf
     owner: root

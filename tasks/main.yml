@@ -1,12 +1,16 @@
 ---
-- import_tasks: installation.yml
+- name: include installation tasks
   tags: [firewalld, firewalld-install, install]
+  ansible.builtin.import_tasks: installation.yml
 
-- import_tasks: configuration.yml
+- name: include configuration tasks
   tags: [firewalld, firewalld-config, config]
+  ansible.builtin.import_tasks: configuration.yml
 
-- import_tasks: service.yml
+- name: include service tasks
   tags: [firewalld, firewalld-service, service]
+  ansible.builtin.import_tasks: service.yml
 
-- import_tasks: rules.yml
+- name: include rules tasks
   tags: [firewalld, firewalld-rules, firewalld-config, config]
+  ansible.builtin.import_tasks: rules.yml

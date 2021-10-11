@@ -1,6 +1,6 @@
 ---
 - name: install Firewalld requirements (Debian)
-  apt:
+  ansible.builtin.apt:
     name:
       - nftables
       - firewalld
@@ -9,7 +9,7 @@
   when: (ansible_os_family | lower) == 'debian'
 
 - name: install Firewalld requirements (RedHat)
-  yum:
+  ansible.builtin.yum:
     name:
       - nftables
       - firewalld
@@ -18,7 +18,7 @@
   when: (ansible_os_family | lower) == 'redhat'
 
 - name: install Firewalld requirements (Arch Linux)
-  pacman:
+  community.general.pacman:
     name:
       - nftables
       - firewalld

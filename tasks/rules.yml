@@ -1,6 +1,6 @@
 ---
 - name: manage permanent firewall rules
-  firewalld:
+  ansible.posix.firewalld:
     icmp_block: "{{ item.icmp_block | default(omit) }}"
     icmp_block_inversion: "{{ item.icmp_block_inversion | default(omit) }}"
     immediate: "{{ item.immediate | default(false) }}"
@@ -21,10 +21,10 @@
   notify: reload firewalld
 
 - name: flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: manage temporary firewall rules
-  firewalld:
+  ansible.posix.firewalld:
     icmp_block: "{{ item.icmp_block | default(omit) }}"
     icmp_block_inversion: "{{ item.icmp_block_inversion | default(omit) }}"
     immediate: "{{ item.immediate | default(false) }}"

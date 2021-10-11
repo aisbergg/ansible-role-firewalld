@@ -1,6 +1,8 @@
 ---
 - name: reload firewalld
-  service:
+  ansible.builtin.service:
     name: firewalld
     state: reloaded
-  when: firewalld_state != 'stopped'
+  when:
+    - firewalld_service_restart_on_change | bool
+    - firewalld_service_state != 'stopped'
