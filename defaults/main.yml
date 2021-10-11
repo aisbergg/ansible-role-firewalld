@@ -14,10 +14,10 @@ firewalld_redhat_enablerepo: ""
 # ------------------------------------------------------------------------------
 
 # service enabled on boot
-firewalld_enabled: true
+firewalld_service_enabled: true
 
 # service run state (started, stopped, restarted)
-firewalld_state: started
+firewalld_service_state: started
 
 # restart service on configuration change
 firewalld_service_restart_on_change: true

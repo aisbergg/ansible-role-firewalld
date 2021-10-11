@@ -15,7 +15,7 @@
     timeout: "{{ item.timeout | default(omit) }}"
     zone: "{{ item.zone | default(omit) }}"
   when:
-    - firewalld_state != 'stopped'
+    - firewalld_service_state != 'stopped'
     - item.permanent | default(true)
   loop: "{{ firewalld_rules }}"
   notify: reload firewalld
@@ -39,6 +39,6 @@
     timeout: "{{ item.timeout | default(omit) }}"
     zone: "{{ item.zone | default(omit) }}"
   when:
-    - firewalld_state != 'stopped'
+    - firewalld_service_state != 'stopped'
     - not (item.permanent | default(true))
   loop: "{{ firewalld_rules }}"
