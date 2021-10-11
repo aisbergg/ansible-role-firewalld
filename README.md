@@ -1,6 +1,6 @@
 # Ansible Role: `aisbergg.firewalld`
 
-This Ansible role is used to install and configure Firewalld on Debian, Arch Linux and Redhat Linux distributions.
+This Ansible role is used to install and configure Firewalld on Debian, Arch Linux and RedHat Linux distributions.
 
 ## Requirements
 
@@ -12,8 +12,9 @@ None.
 |----------|----------|----------|
 | `firewalld_debian_repo` | `{{ ansible_distribution_release }}-backports` | The repository to install Firewalld from. Applies only to Debian systems. |
 | `firewalld_redhat_enablerepo` |  | Repository to enable while installing Firewalld. Applies only to RedHat systems. |
-| `firewalld_enabled` | `true` | Enable the Firewalld service. |
-| `firewalld_state` | `started` | Manage the state of the Firewalld service</br>Choices: <ul><li>reloaded</li><li>restarted</li><li>started</li><li>stopped</li></ul> |
+| `firewalld_service_enabled` | `true` | Enable the Firewalld service. |
+| `firewalld_service_state` | `started` | Manage the state of the Firewalld service</br>Choices: <ul><li>reloaded</li><li>restarted</li><li>started</li><li>stopped</li></ul> |
+| `firewalld_service_restart_on_change` | `true` | Restart Firewalld service on configuration changes. |
 | `firewalld_rules` | `[]` | List of firewall rules. The parameters can be looked up [here](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).* |
 | `firewalld_config` | `{}` | A dict (key-value pairs) of Firewalld base configuration options. |
 | `firewalld_config.DefaultZone` | `public` | See the [official Firewalld documentation](https://firewalld.org/documentation/configuration/firewalld-conf.html). |
@@ -38,8 +39,8 @@ None.
 ```yaml
 - hosts: all
   vars:
-    firewalld_enabled: true
-    firewalld_state: started
+    firewalld_service_enabled: true
+    firewalld_service_state: started
     firewalld_config:
       FirewallBackend: nftables
     firewalld_rules:
@@ -50,13 +51,13 @@ None.
         zone: public
       - service: http
         zone: public
-      
+
       # temporary rule
       - port: 222/tcp
         zone: trusted
         permanent: false
         state: enabled
-      
+
       # disable rule
       - service: ftp
         zone: public
