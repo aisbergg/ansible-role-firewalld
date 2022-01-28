@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
+- [2.1.0 (2022-01-28)](#2.1.0-2022-01-28)
 - [2.0.0 (2021-10-11)](#200-2021-10-11)
 - [1.2.2 (2020-11-01)](#122-2020-11-01)
 - [1.2.1 (2020-08-26)](#121-2020-08-26)
@@ -11,6 +12,20 @@ All notable changes to this project will be documented in this file.
 - [1.0.0 (2020-05-11)](#100-2020-05-11)
 
 ---
+
+<a name="2.1.0"></a>
+## [2.1.0](https://github.com/aisbergg/ansible-role-firewalld/compare/v2.0.0...2.1.0) (2022-01-28)
+
+### CI Configuration
+
+- fix automatic release and publish process
+
+### Chores
+
+- include changelog in bump commits
+- update changelog template
+- **requirements.yml:** add role requirements
+
 
 <a name="2.0.0"></a>
 ## [2.0.0](https://github.com/aisbergg/ansible-role-firewalld/compare/v1.2.2...v2.0.0) (2021-10-11)
@@ -104,4 +119,4 @@ All notable changes to this project will be documented in this file.
 <a name="1.0.0"></a>
 ## [1.0.0]() (2020-05-11)
 
-- Initial Release
+Initial Release
